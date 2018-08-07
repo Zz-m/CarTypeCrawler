@@ -20,7 +20,8 @@ public class Application {
     private Logger logger = LoggerFactory.getLogger(Application.class);
 
     private static boolean crawlAllCarAndSerial = false;
-    private static boolean printKeyValue = false;
+    private static boolean printKeyValueToConsole = false;
+    private static boolean printKeyValueToDB = false;
 
     @Resource
     private CrawlCarAndSerialService crawlCarAndSerialService;
@@ -29,7 +30,8 @@ public class Application {
 
     public static void main(String[] args) {
         crawlAllCarAndSerial = false;
-        printKeyValue = true;
+        printKeyValueToConsole = false;
+        printKeyValueToDB = true;
         SpringApplication.run(Application.class, args);
     }
 
@@ -44,8 +46,16 @@ public class Application {
     @Bean
     public CommandLineRunner printKeyValue() {
         return (args -> {
-            if (!printKeyValue) return;
-            printKeyValueService.printAll();
+            if (!printKeyValueToConsole) return;
+            printKeyValueService.printAllToConsole();
+        });
+    }
+
+    @Bean
+    public CommandLineRunner printKeyValueToDB() {
+        return (args -> {
+            if (!printKeyValueToDB) return;
+            printKeyValueService.printAllToDB();
         });
     }
 }
