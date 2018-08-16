@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.Resource;
 
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  * Created by dhx on 2018/7/16.
  */
 @SpringBootApplication
+@EnableScheduling
 public class Application {
 
     private Logger logger = LoggerFactory.getLogger(Application.class);
@@ -31,7 +33,7 @@ public class Application {
     public static void main(String[] args) {
         crawlAllCarAndSerial = false;
         printKeyValueToConsole = false;
-        printKeyValueToDB = true;
+        printKeyValueToDB = false;
         SpringApplication.run(Application.class, args);
     }
 

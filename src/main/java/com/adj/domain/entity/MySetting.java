@@ -27,4 +27,12 @@ public class MySetting {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "MySetting{" +
+                "myId='" + myId + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }
